@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HtmlUniqueWords</name>
+    </assembly>
+    <members>
+        <member name="T:HtmlUniqueWords.Core.WebPage">
+            <summary>
+            The Web Resorce class
+            Conteins methods for getting web page fron Internet to local drive
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.WebPage.#ctor(System.String,System.String)">
+            <summary>
+            Get web page from internet to local drive
+            </summary>
+            <param name="source">URL adress of Webpage</param>
+            <param name="localFile">Name of the local file</param>
+        </member>
+    </members>
+</doc>
