@@ -9,4 +9,8 @@
     <DocumentationFile>C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\HtmlUniqueWords.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.32" />
+  </ItemGroup>
+
 </Project>

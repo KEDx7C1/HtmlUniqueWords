@@ -2,7 +2,7 @@
   "profiles": {
     "HtmlUniqueWords": {
       "commandName": "Project",
-      "commandLineArgs": "http://yandex.ru local.html"
+      "commandLineArgs": "http://ulpressa.ru local.html"
     }
   }
 }

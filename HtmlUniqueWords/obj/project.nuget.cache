@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6akXkIJhBgz1jjxFvOLHaj1+6Pw+P1uh1TGbWCN3itungQB1W7RxgORe7sXkksc7siCFD+EItqg6d6H2HPtrmg==",
+  "dgSpecHash": "crtcfR1Hn40x3GvnlXCRVtuJn5KKiCurdPWIOZBM9QlRd/X3gFasOERWtev5FjLMRnKNLLBx1YcXKLqLD+uGoQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\htmlagilitypack\\1.11.32\\htmlagilitypack.1.11.32.nupkg.sha512"
+  ],
   "logs": []
 }
