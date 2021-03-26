@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.exe
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.deps.json
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.runtimeconfig.json
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.runtimeconfig.dev.json
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.dll
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlUniqueWords.pdb
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Release\netcoreapp3.1\HtmlAgilityPack.dll
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.csprojAssemblyReference.cache
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.AssemblyInfo.cs
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.csproj.CopyComplete
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.dll
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.pdb
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Release\netcoreapp3.1\HtmlUniqueWords.genruntimeconfig.cache

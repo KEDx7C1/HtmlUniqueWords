@@ -9,13 +9,37 @@ namespace HtmlUniqueWords.Core
     /// </summary>
     class Parser
     {
+        private Dictionary<string, int> UniqueWords;
+        protected char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')' };
+
+        public Parser()
+        {
+            UniqueWords = new Dictionary<string, int>();
+        }
+
+
+        private void SetPairs(string line)
+        {
+            string[] bodyWords = line.ToUpper().Split(splitter);
+            foreach (string s in bodyWords)
+            {
+                int count;
+                if (s != String.Empty)
+                {
+                    if (UniqueWords.TryGetValue(s, out count))
+                        UniqueWords[s] += 1;
+                    else UniqueWords.Add(s, 1);
+                }
+            }
+        }
+
         /// <summary>
-        /// Method to get count of unique words form with html
+        /// Method to get count of unique words form text
         /// </summary>
-        public static Dictionary<string, int> GetWordsStatistic (LocalPage localPage)
+        public Dictionary<string, int> GetWordsStatistic (LocalPage localPage)
         {
             HtmlDocument doc = new HtmlDocument();
-            char[] splitter = new char[] { ' ', ',', ':', ';', '.', '"', '(', ')', '?' };
+            
             var result = new Dictionary<string, int>();
 
             string line = localPage.GetText();
@@ -26,23 +50,16 @@ namespace HtmlUniqueWords.Core
             {
                 foreach (var node in nodes)
                 {
-
-                    string[] bodyWords = node.InnerText.ToString().ToUpper().Split(splitter);
-
-                    foreach (string s in bodyWords)
-                    {
-                        int count;
-                        if (s != String.Empty)
-                        {
-                            if (result.TryGetValue(s, out count))
-                                result[s] += 1;
-                            else result.Add(s, 1);
-                        }
-
-                    }
+                    SetPairs(node.InnerText.ToString());
                 }
             }
-            return result;
+            return UniqueWords;
+        }
+
+        public Dictionary<string, int> GetWordsStatistic(string line)
+        {
+            SetPairs(line);
+            return UniqueWords;
         }
     }
 }

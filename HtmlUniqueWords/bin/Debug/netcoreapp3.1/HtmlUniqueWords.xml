@@ -36,12 +36,7 @@
         </member>
         <member name="M:HtmlUniqueWords.Core.Parser.GetWordsStatistic(HtmlUniqueWords.Core.LocalPage)">
             <summary>
-            Method to get count of unique words form with html
-            </summary>
-        </member>
-        <member name="T:HtmlUniqueWords.Core.Serialize">
-            <summary>
-            
+            Method to get count of unique words form text
             </summary>
         </member>
         <member name="M:HtmlUniqueWords.Core.Serialize.WriteLine(System.String)">

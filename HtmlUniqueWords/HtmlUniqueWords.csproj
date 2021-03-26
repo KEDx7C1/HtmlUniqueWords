@@ -11,6 +11,14 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.32" />
+    <PackageReference Include="NLog" Version="4.7.9" />
+    <PackageReference Include="NLog.Config" Version="4.7.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\User\.nuget\packages\nlog.config\4.7.9\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

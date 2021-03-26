@@ -14,3 +14,5 @@ C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Debug\netcoreapp3
 C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Debug\netcoreapp3.1\HtmlUniqueWords.xml
 C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
 C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\obj\Debug\netcoreapp3.1\HtmlUniqueWords.csproj.CopyComplete
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Debug\netcoreapp3.1\NLog.config
+C:\Users\User\source\repos\HtmlUniqueWords\HtmlUniqueWords\bin\Debug\netcoreapp3.1\NLog.dll
