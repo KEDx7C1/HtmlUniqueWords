@@ -1,6 +1,8 @@
 ﻿using System;
 using NLog;
 using System.Net;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace HtmlUniqueWords
 {
@@ -15,7 +17,7 @@ namespace HtmlUniqueWords
             }
             catch (Exception ex)
             {
-                UI.Message.Show("Syntax error\nUsage: HtmlUniqueWords.exe SOURCEWEBPAGE DESTLOCALFILE\n\nCopy Html file from SOURCEWEBPAGE URL to DESTLOCALFILE.\n" +
+                UI.Message.Show("Syntax error\n\nUsage: HtmlUniqueWords.exe SOURCEWEBPAGE DESTLOCALFILE\n\nCopy Html file from SOURCEWEBPAGE URL to DESTLOCALFILE.\n" +
                     "Get count of unique words in Html file");
                 logger.Error("Arguments error: " + ex.Message.ToString());
                 System.Environment.Exit(0);
@@ -36,10 +38,18 @@ namespace HtmlUniqueWords
                 //serializeWeb.Dispose();
 
 
-                Core.LocalPage localPage = new Core.LocalPage(args[1]);
-                Core.Parser htmlParser = new Core.Parser();
-                foreach (var s in htmlParser.GetWordsStatistic(localPage))
-                    UI.Message.Show(s.Key + " " + s.Value);
+                //Core.LocalPage localPage = new Core.LocalPage(args[1]);
+                //Core.Parser htmlParser = new Core.Parser();
+                //foreach (var s in htmlParser.GetWordsStatistic(localPage))
+                //    UI.Message.Show(s.Key + " " + s.Value);
+
+                string s = "<html><title>Title</title><body>First word, second Word</body></html>";
+                Core.Parser parser = new Core.Parser();
+                Dictionary<string, int> actual = parser.GetWordsStatistic(Regex.Replace(s.ToString(), @"\s+", " "));
+                foreach (var l in actual)
+                {
+                    Console.WriteLine(l.Key + " " + l.Value);
+                }
 
             }
             catch (WebException ex)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
 namespace HtmlUniqueWords.Core
@@ -7,10 +8,10 @@ namespace HtmlUniqueWords.Core
     /// <summary>
     /// The class cosist of methods to parse the text
     /// </summary>
-    class Parser
+    public class Parser
     {
         private Dictionary<string, int> UniqueWords;
-        protected char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')' };
+        protected char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t' };
 
         public Parser()
         {
@@ -39,13 +40,11 @@ namespace HtmlUniqueWords.Core
         public Dictionary<string, int> GetWordsStatistic (LocalPage localPage)
         {
             HtmlDocument doc = new HtmlDocument();
-            
-            var result = new Dictionary<string, int>();
 
             string line = localPage.GetText();
             doc.LoadHtml(line);
 
-            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("*");
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
             if (nodes != null)
             {
                 foreach (var node in nodes)
@@ -53,12 +52,25 @@ namespace HtmlUniqueWords.Core
                     SetPairs(node.InnerText.ToString());
                 }
             }
+            else throw new FormatException();
             return UniqueWords;
         }
 
         public Dictionary<string, int> GetWordsStatistic(string line)
         {
-            SetPairs(line);
+            HtmlDocument doc = new HtmlDocument();
+
+            doc.LoadHtml(line);
+
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
+            if (nodes != null)
+            {
+                foreach (var node in nodes)
+                {
+                    SetPairs(node.InnerText.ToString());
+                }
+            }
+            else throw new FormatException();
             return UniqueWords;
         }
     }

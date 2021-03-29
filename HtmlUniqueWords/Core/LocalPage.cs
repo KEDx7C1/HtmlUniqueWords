@@ -9,7 +9,7 @@ namespace HtmlUniqueWords.Core
     /// <summary>
     /// The class of local html file
     /// </summary>
-    class LocalPage :IHtml
+    public class LocalPage :IHtml
     {
         public string Source { get; }
         private StreamReader reader;

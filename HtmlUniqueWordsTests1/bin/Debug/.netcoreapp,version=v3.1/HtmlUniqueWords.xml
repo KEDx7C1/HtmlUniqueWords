@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HtmlUniqueWords</name>
+    </assembly>
+    <members>
+        <member name="T:HtmlUniqueWords.Core.IHtml">
+            <summary>
+            Interface of html resources
+            </summary>
+        </member>
+        <member name="P:HtmlUniqueWords.Core.IHtml.Source">
+            <summary>
+            File source
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.IHtml.GetText">
+            <summary>
+            Getting text from html
+            </summary>
+        </member>
+        <member name="T:HtmlUniqueWords.Core.LocalPage">
+            <summary>
+            The class of local html file
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.LocalPage.GetText">
+            <summary>
+            Get content of html file
+            </summary>
+        </member>
+        <member name="T:HtmlUniqueWords.Core.Parser">
+            <summary>
+            The class cosist of methods to parse the text
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.Parser.GetWordsStatistic(HtmlUniqueWords.Core.LocalPage)">
+            <summary>
+            Method to get count of unique words form text
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.Serialize.WriteLine(System.String)">
+            <summary>
+            Method for passing a string to a stream 
+            </summary>
+            <param name="line"></param>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.Serialize.Dispose">
+            <summary>
+            Method for closing a stream
+            </summary>
+        </member>
+        <member name="T:HtmlUniqueWords.Core.WebPage">
+            <summary>
+            The Web Resource class
+            Conteins method for getting webpage's line from Internet
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.WebPage.GetText">
+            <summary>
+            Get line of Web page from Internet using HttpRequest
+            </summary>
+            <returns>WebPage's line</returns>
+        </member>
+    </members>
+</doc>
