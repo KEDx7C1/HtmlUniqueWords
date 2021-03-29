@@ -28,10 +28,7 @@ namespace HtmlUniqueWords.Core.Tests
         public void GetWordsStatisticExtention()
         {
             string text = "";
-
             Parser parser = new Parser();
-
-            //Dictionary<string, int> expected = new Dictionary<string, int> { { "FIRST", 1 }, { "WORD", 2 }, { "SECOND", 1 } };
 
             try
             {
@@ -42,9 +39,6 @@ namespace HtmlUniqueWords.Core.Tests
             {
 
             }
-
-            
-            //CollectionAssert.AreEqual(expected, actual);
 
         }
 

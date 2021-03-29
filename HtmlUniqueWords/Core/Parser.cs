@@ -10,7 +10,7 @@ namespace HtmlUniqueWords.Core
     /// </summary>
     public class Parser
     {
-        private Dictionary<string, int> UniqueWords;
+        public Dictionary<string, int> UniqueWords { get; }
         protected char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t' };
 
         public Parser()

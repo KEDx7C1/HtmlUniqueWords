@@ -27,29 +27,24 @@ namespace HtmlUniqueWords
             string line;
             try
             {
-                //Core.WebPage webPage = new Core.WebPage(args[0]);
-                //Core.Serialize serializeWeb = new Core.Serialize(args[1]);
-                //do
-                //{
-                //    line = webPage.GetText();
-                //    serializeWeb.WriteLine(line);
-                //}
-                //while (line != null);
-                //serializeWeb.Dispose();
-
-
-                //Core.LocalPage localPage = new Core.LocalPage(args[1]);
-                //Core.Parser htmlParser = new Core.Parser();
-                //foreach (var s in htmlParser.GetWordsStatistic(localPage))
-                //    UI.Message.Show(s.Key + " " + s.Value);
-
-                string s = "<html><title>Title</title><body>First word, second Word</body></html>";
-                Core.Parser parser = new Core.Parser();
-                Dictionary<string, int> actual = parser.GetWordsStatistic(Regex.Replace(s.ToString(), @"\s+", " "));
-                foreach (var l in actual)
+                Core.WebPage webPage = new Core.WebPage(args[0]);
+                Core.Serialize serializeWeb = new Core.Serialize(args[1]);
+                do
                 {
-                    Console.WriteLine(l.Key + " " + l.Value);
+                    line = webPage.GetText();
+                    serializeWeb.WriteLine(line);
                 }
+                while (line != null);
+                serializeWeb.Dispose();
+
+
+                Core.LocalPage localPage = new Core.LocalPage(args[1]);
+                Core.Parser htmlParser = new Core.Parser();
+
+                foreach (var s in htmlParser.GetWordsStatistic(localPage))
+                    UI.Message.Show(s.Key + " " + s.Value);
+
+                ADO.dbUsage.InsertValues(htmlParser.UniqueWords, args[0]);
 
             }
             catch (WebException ex)
@@ -64,6 +59,8 @@ namespace HtmlUniqueWords
                 UI.Message.Show(ex.Message);
                 System.Environment.Exit(0);
             }
+
+            
 
         }
     }
