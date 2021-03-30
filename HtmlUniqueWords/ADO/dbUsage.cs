@@ -19,7 +19,7 @@ namespace HtmlUniqueWords.ADO
 
             foreach (var s in uniqueWords)
             {
-                string query = string.Format("INSERT INTO 'uniquewords' ('word', 'count', 'url') VALUES ('{0}', '{1}', {2})", s.Key, s.Value, source);
+                string query = string.Format("INSERT INTO 'uniquewords' ('word', 'count', 'url') VALUES ('{0}', '{1}', '{2}')", s.Key, s.Value, source);
                 connection.ExecuteInsertQuery(query);
             }
 

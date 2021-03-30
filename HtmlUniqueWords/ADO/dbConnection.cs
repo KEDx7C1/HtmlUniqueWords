@@ -17,10 +17,8 @@ namespace HtmlUniqueWords.ADO
             {
                 SQLiteConnection.CreateFile(dbName);
                 connection = new SQLiteConnection(string.Format("Data Source={0};", dbName));
-                SQLiteCommand command = new SQLiteCommand("CREATE TABLE urls (id INTEGER PRIMARY KEY, url TEXT)", connection);
                 connection.Open();
-                //command.ExecuteNonQuery();
-                command = new SQLiteCommand("CREATE TABLE uniquewords (id INTEGER PRIMARY KEY, word TEXT, count INTEGER, url TEXT)", connection);
+                SQLiteCommand command = new SQLiteCommand("CREATE TABLE uniquewords (id INTEGER PRIMARY KEY, word TEXT, count INTEGER, url TEXT)", connection);
                 command.ExecuteNonQuery();
                 
             }
