@@ -4,6 +4,52 @@
         <name>HtmlUniqueWords</name>
     </assembly>
     <members>
+        <member name="T:HtmlUniqueWords.ADO.DbConnection">
+            <summary>
+            Class of SQLite conntection
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbConnection.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbConnection.OpenConnection">
+            <summary>
+            Метод открытия соединения к базе данных SQLite
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbConnection.ExecuteSelectQuery(System.String)">
+            <summary>
+            Метод запросов выборки к базе данных SQLite
+            </summary>
+            <param name="query">Текст запроса</param>
+            <returns></returns>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbConnection.ExecuteInsertQuery(System.String)">
+            <summary>
+            Метод запросов вставки к базе данных SQLite
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbConnection.CloseConnection">
+            <summary>
+            Метод закрытия соединения
+            </summary>
+        </member>
+        <member name="T:HtmlUniqueWords.ADO.DbUsage">
+            <summary>
+            Класс обращений к базе данных SQL
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.ADO.DbUsage.InsertValues(System.Collections.Generic.Dictionary{System.String,System.Int32},System.String)">
+            <summary>
+            Добавление данных в базу данных
+            </summary>
+            <param name="uniqueWords">Словарь уникальных слов</param>
+            <param name="source">URL адрес страницы</param>
+        </member>
         <member name="T:HtmlUniqueWords.Core.IHtml">
             <summary>
             Interface of html resources
@@ -24,6 +70,11 @@
             The class of local html file
             </summary>
         </member>
+        <member name="P:HtmlUniqueWords.Core.LocalPage.Source">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:HtmlUniqueWords.Core.LocalPage.GetText">
             <summary>
             Get content of html file
@@ -36,7 +87,12 @@
         </member>
         <member name="M:HtmlUniqueWords.Core.Parser.GetWordsStatistic(HtmlUniqueWords.Core.LocalPage)">
             <summary>
-            Method to get count of unique words form text
+            Получение статистики уникальных слов из html файла
+            </summary>
+        </member>
+        <member name="M:HtmlUniqueWords.Core.Parser.GetWordsStatistic(System.String)">
+            <summary>
+            Получение статистики уникальных слов из строки
             </summary>
         </member>
         <member name="M:HtmlUniqueWords.Core.Serialize.WriteLine(System.String)">

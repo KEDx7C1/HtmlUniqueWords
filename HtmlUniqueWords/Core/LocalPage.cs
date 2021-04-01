@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Text;
-using System.IO;
-using System.Text.RegularExpressions;
+
 
 namespace HtmlUniqueWords.Core
 {
@@ -11,6 +9,9 @@ namespace HtmlUniqueWords.Core
     /// </summary>
     public class LocalPage :IHtml
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string Source { get; }
         private StreamReader reader;
 
@@ -25,9 +26,18 @@ namespace HtmlUniqueWords.Core
         /// </summary>
         public string GetText()
         {
-            string line = reader.ReadToEnd();
+            StringBuilder lines = new StringBuilder();
+            string line;
+            
+            for (int i = 0; i < 200000; i++)
+            {
+                line = reader.ReadLine();
+                if (!string.IsNullOrEmpty(line))
+                    lines.Append(line);
+                if (reader.EndOfStream) break;
+            }
 
-            return (Regex.Replace(line.ToString(), @"\s+", " ")); //replace repeating spaces and empty lines
+            return (lines.ToString());
         }
     }
 }

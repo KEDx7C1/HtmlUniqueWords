@@ -22,16 +22,51 @@ Example:
     HtmlUniqueWords.exe https://google.com GoogleLocal.html
 
 It saves the *.html* file from the specified _URL-adress_ to the _localfile_
-and counts the number of unique words in the *body* tag of the saved file.
+and counts the number of unique words in the the saved file.
 Result is saved in the  local SQLite3 database and output to the console.
 
-## Appendix
+## Comment
 
 This program was created as test for admission to **Java and C #. Backend-workshop online from the IT company [SimbirSoft](https://www.simbirsoft.com/)**.
 
 ## License
 
-_HtmlUniqueWords_ using whose libraries:
+_HtmlUniqueWords_ using these libraries:
 
 - [HtmlAgilityPack;](https://github.com/zzzprojects/html-agility-pack)
 - [NLog](https://github.com/NLog/NLog) created by Jaroslaw Kowalski <jaak@jkowalski.net>, Kim Christensen, Julian Verdurmen.
+
+
+---
+
+
+## Описание
+
+_HtmlUniqueWords_ подсчитывает количество уникальных слов на веб-странице.
+
+## Использование программы
+
+Программа принимает два аргумента:
+
+_URL-adress_ - URL адрес веб-страницы с указанием протокола _http_ или _https_;<br/>
+_localfile_ - _.html_ файл.
+
+Запуск используя коммандную строку:
+
+    HtmlUniqueWords.exe URL-adress localfile
+
+Пример:
+
+     HtmlUniqueWords.exe https://google.com GoogleLocal.html
+
+Программа сохраняет *.html* файл с указанного _URL-adress_ в _localfile_ и вычисляет количество уникальных слов в сохраненном файле. Результат сохраняется в локальной SQLite3 базе данных и выводится в консоль.
+
+## Примечание
+
+Программа разрабатывалась в качестве тестового задания для поступления на **Java и C#. Backend-практикум онлайн от IT-компании [SimbirSoft](https://www.simbirsoft.com/)**.
+
+## Лицензии
+_HtmlUniqueWords_ использует следующие библиотеки:
+
+- [HtmlAgilityPack;](https://github.com/zzzprojects/html-agility-pack)
+- [NLog](https://github.com/NLog/NLog) разработанную Jaroslaw Kowalski <jaak@jkowalski.net>, Kim Christensen, Julian Verdurmen.

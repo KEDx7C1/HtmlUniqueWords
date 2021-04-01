@@ -1,8 +1,6 @@
 ﻿using System;
 using NLog;
 using System.Net;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace HtmlUniqueWords
 {
@@ -11,6 +9,7 @@ namespace HtmlUniqueWords
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
+            // Проверка числа аргументов
             try
             {
                 if (args.Length != 2) throw new ArgumentNullException();
@@ -20,7 +19,7 @@ namespace HtmlUniqueWords
                 UI.Message.Show("Syntax error\n\nUsage: HtmlUniqueWords.exe SOURCEWEBPAGE DESTLOCALFILE\n\nCopy Html file from SOURCEWEBPAGE URL to DESTLOCALFILE.\n" +
                     "Get count of unique words in Html file");
                 logger.Error("Arguments error: " + ex.Message.ToString());
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
            
 
@@ -44,20 +43,20 @@ namespace HtmlUniqueWords
                 foreach (var s in htmlParser.GetWordsStatistic(localPage))
                     UI.Message.Show(s.Key + " " + s.Value);
 
-                ADO.dbUsage.InsertValues(htmlParser.UniqueWords, args[0]);
+                ADO.DbUsage.InsertValues(htmlParser.UniqueWords, args[0]);
 
             }
             catch (WebException ex)
             {
                 logger.Error("URL error: " + ex.Message.ToString());
                 UI.Message.Show(ex.Message);
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message.ToString());
                 UI.Message.Show(ex.Message);
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
 
             

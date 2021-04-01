@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
 using HtmlAgilityPack;
 
 namespace HtmlUniqueWords.Core
@@ -11,8 +11,8 @@ namespace HtmlUniqueWords.Core
     public class Parser
     {
         public Dictionary<string, int> UniqueWords { get; }
-        protected char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t' };
-
+        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '<', '>' };
+        
         public Parser()
         {
             UniqueWords = new Dictionary<string, int>();
@@ -21,56 +21,57 @@ namespace HtmlUniqueWords.Core
 
         private void SetPairs(string line)
         {
-            string[] bodyWords = line.ToUpper().Split(splitter);
+            string[] bodyWords = line.ToUpper().Split(splitter).Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
+
             foreach (string s in bodyWords)
             {
-                int count;
                 if (s != String.Empty)
                 {
-                    if (UniqueWords.TryGetValue(s, out count))
+                    if (UniqueWords.TryGetValue(s, out int count))
                         UniqueWords[s] += 1;
                     else UniqueWords.Add(s, 1);
                 }
             }
         }
 
+        private void Pairs (string line)
+        {
+            HtmlDocument doc = new HtmlDocument();
+
+            doc.LoadHtml(line);
+
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("*");
+            if (nodes != null)
+            {
+                foreach (var node in nodes)
+                {
+                    SetPairs(node.InnerText.ToString());
+                }
+            }
+            else throw new FormatException();
+        }
+
         /// <summary>
-        /// Method to get count of unique words form text
+        /// Получение статистики уникальных слов из html файла
         /// </summary>
         public Dictionary<string, int> GetWordsStatistic (LocalPage localPage)
         {
-            HtmlDocument doc = new HtmlDocument();
+            string line = "s";
 
-            string line = localPage.GetText();
-            doc.LoadHtml(line);
-
-            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
-            if (nodes != null)
+            while (!string.IsNullOrEmpty(line))
             {
-                foreach (var node in nodes)
-                {
-                    SetPairs(node.InnerText.ToString());
-                }
+                line = localPage.GetText();
+                if (!string.IsNullOrEmpty(line)) Pairs(line);
             }
-            else throw new FormatException();
+
             return UniqueWords;
         }
-
+        /// <summary>
+        /// Получение статистики уникальных слов из строки
+        /// </summary>
         public Dictionary<string, int> GetWordsStatistic(string line)
         {
-            HtmlDocument doc = new HtmlDocument();
-
-            doc.LoadHtml(line);
-
-            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
-            if (nodes != null)
-            {
-                foreach (var node in nodes)
-                {
-                    SetPairs(node.InnerText.ToString());
-                }
-            }
-            else throw new FormatException();
+            Pairs(line);
             return UniqueWords;
         }
     }
