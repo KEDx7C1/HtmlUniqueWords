@@ -8,16 +8,23 @@ namespace HtmlUniqueWords.ADO
     /// <summary>
     /// Класс обращений к базе данных SQL
     /// </summary>
-    public class DbUsage
+    class DbCommands : IDbCommands
     {
+        public IDbConnection dbConnection { get; set; }
         /// <summary>
         /// Добавление данных в базу данных
         /// </summary>
         /// <param name="uniqueWords">Словарь уникальных слов</param>
         /// <param name="source">URL адрес страницы</param>
-        public static void InsertValues(Dictionary<string, int> uniqueWords, string source)
+        public DbCommands(IDbConnection dbConnection)
         {
-            DbConnection connection = new DbConnection();
+            this.dbConnection = dbConnection;
+        }
+
+
+        public void InsertValues(Dictionary<string, int> uniqueWords, string source)
+        {
+            dbConnection = new DbConnection();
             int numberOfLines = 0;
             bool notExecutedQuery = false;
 
@@ -39,16 +46,16 @@ namespace HtmlUniqueWords.ADO
                 }
                 if (numberOfLines == 100)
                 {
-                    connection.ExecuteInsertQuery(query.ToString());
+                    dbConnection.ExecuteInsertQuery(query.ToString());
                     numberOfLines = 0;
                     notExecutedQuery = false;
                 }
             }
             if (notExecutedQuery)   //if counts of appended lines less 100 and query is not executed
             {
-                connection.ExecuteInsertQuery(query.ToString());
+                dbConnection.ExecuteInsertQuery(query.ToString());
             }
-            connection.CloseConnection();
+            dbConnection.CloseConnection();
         }
     }
 }

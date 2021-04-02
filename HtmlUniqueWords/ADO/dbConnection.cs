@@ -9,19 +9,22 @@ namespace HtmlUniqueWords.ADO
     /// <summary>
     /// Class of SQLite conntection
     /// </summary>
-    public class DbConnection
+    class DbConnection : IDbConnection
     {
         private readonly string dbName = "local.db";
+        private readonly string dbDir = "SQLite";
         private SQLiteConnection connection;
         /// <summary>
         /// 
         /// </summary>
         public DbConnection()
         {
-            if (!File.Exists(dbName))
+            if (!Directory.Exists(dbDir))
+                Directory.CreateDirectory(dbDir);
+            if (!File.Exists($@"{dbDir}\\" + dbName))
             {
-                SQLiteConnection.CreateFile(dbName);
-                connection = new SQLiteConnection(string.Format("Data Source={0};", dbName));
+                SQLiteConnection.CreateFile($@"{dbDir}\\" + dbName);
+                connection = new SQLiteConnection(string.Format("Data Source={0};", $@"{dbDir}\\" + dbName));
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand("CREATE TABLE uniquewords (id INTEGER PRIMARY KEY, word TEXT, count INTEGER, url TEXT)", connection);
                 command.ExecuteNonQuery();
@@ -29,7 +32,7 @@ namespace HtmlUniqueWords.ADO
             }
             else
             {
-                connection = new SQLiteConnection(string.Format("Data Source={0};", dbName));
+                connection = new SQLiteConnection(string.Format("Data Source={0};", $@"{dbDir}\\" + dbName));
                 connection.Open();
             }
         }

@@ -1,78 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using HtmlAgilityPack;
 
 namespace HtmlUniqueWords.Core
 {
-    /// <summary>
-    /// The class cosist of methods to parse the text
-    /// </summary>
-    public class Parser
+    class Parser
     {
-        public Dictionary<string, int> UniqueWords { get; }
+        public ILocalFile localFile;
+
+        private Dictionary<string, int> UniqueWords;
         private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '<', '>' };
-        
-        public Parser()
+
+        public Parser (ILocalFile localFile)
+        {
+            this.localFile = localFile;
+        }
+
+        public Dictionary<string, int> GetUniqWords()
         {
             UniqueWords = new Dictionary<string, int>();
-        }
-
-
-        private void SetPairs(string line)
-        {
-            string[] bodyWords = line.ToUpper().Split(splitter).Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
-
-            foreach (string s in bodyWords)
-            {
-                if (s != String.Empty)
-                {
-                    if (UniqueWords.TryGetValue(s, out int count))
-                        UniqueWords[s] += 1;
-                    else UniqueWords.Add(s, 1);
-                }
-            }
-        }
-
-        private void Pairs (string line)
-        {
+            StreamReader reader = new StreamReader(localFile.path);
             HtmlDocument doc = new HtmlDocument();
+            doc.Load(reader);
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
 
-            doc.LoadHtml(line);
-
-            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("*");
             if (nodes != null)
             {
                 foreach (var node in nodes)
                 {
-                    SetPairs(node.InnerText.ToString());
+
+                    string[] words = node.InnerText.ToString().ToUpper().Split(splitter).Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
+
+                    foreach (string s in words)
+                    {
+                        if (s != String.Empty)
+                        {
+                            if (UniqueWords.TryGetValue(s, out int count))
+                                UniqueWords[s] += 1;
+                            else UniqueWords.Add(s, 1);
+                        }
+                    }
                 }
             }
-            else throw new FormatException();
-        }
-
-        /// <summary>
-        /// Получение статистики уникальных слов из html файла
-        /// </summary>
-        public Dictionary<string, int> GetWordsStatistic (LocalPage localPage)
-        {
-            string line = "s";
-
-            while (!string.IsNullOrEmpty(line))
-            {
-                line = localPage.GetText();
-                if (!string.IsNullOrEmpty(line)) Pairs(line);
-            }
 
             return UniqueWords;
+
         }
-        /// <summary>
-        /// Получение статистики уникальных слов из строки
-        /// </summary>
-        public Dictionary<string, int> GetWordsStatistic(string line)
-        {
-            Pairs(line);
-            return UniqueWords;
-        }
+
     }
 }

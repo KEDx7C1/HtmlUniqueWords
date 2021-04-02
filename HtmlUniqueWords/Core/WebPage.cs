@@ -1,35 +1,35 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 
 namespace HtmlUniqueWords.Core
 {
-    /// <summary>
-    /// The Web Resource class
-    /// Conteins method for getting webpage's line from Internet
-    /// </summary>
-    class WebPage : IHtml
+    class WebPage:IWebPage
     {
-
-        public string Source { get; }
-
-        private WebRequest request;
-        private StreamReader reader;
+        public string source { get; }
 
         public WebPage(string source)
         {
-            Source = source;
-            request = HttpWebRequest.Create(Source);
-            request.Method = "GET";
-            reader = new StreamReader(request.GetResponse().GetResponseStream());
-    }
-        /// <summary>
-        /// Get line of Web page from Internet using HttpRequest
-        /// </summary>
-        /// <returns>WebPage's line</returns>
-        public string GetText ()
+            this.source = source;
+        }
+
+        public void DownloadPage (string path)
         {
-            string line = reader.ReadLine();
-            return line;
+            WebClient client = new WebClient();
+            string htmlDir = "html";
+
+            try
+            {
+                if (!Directory.Exists(htmlDir))
+                    Directory.CreateDirectory(htmlDir);
+                client.DownloadFile(source, @$"{htmlDir}\\" + path);
+            }
+            catch
+            {
+                throw new FieldAccessException(@$"Приложение не может получить доступ к файлу {path}");
+            }
+            
+            
         }
 
     }
