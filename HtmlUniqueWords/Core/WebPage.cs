@@ -22,6 +22,7 @@ namespace HtmlUniqueWords.Core
             {
                 if (!Directory.Exists(htmlDir))
                     Directory.CreateDirectory(htmlDir);
+                UI.Message.Show($"Веб страница {source} сохраняется");
                 client.DownloadFile(source, @$"{htmlDir}\\" + path);
             }
             catch

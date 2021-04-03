@@ -1,6 +1,6 @@
 ﻿namespace HtmlUniqueWords.Core
 {
-    interface IWebPage
+    public interface IWebPage
     {
         string source { get; }
 

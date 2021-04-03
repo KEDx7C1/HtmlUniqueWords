@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj": {}
+    "D:\\dev\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj": {
+    "D:\\dev\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj",
+        "projectUniqueName": "D:\\dev\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj",
         "projectName": "HtmlUniqueWords",
-        "projectPath": "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\HtmlUniqueWords\\HtmlUniqueWords\\obj\\",
+        "projectPath": "D:\\dev\\HtmlUniqueWords\\HtmlUniqueWords\\HtmlUniqueWords.csproj",
+        "packagesPath": "C:\\Users\\x7c1\\.nuget\\packages\\",
+        "outputPath": "D:\\dev\\HtmlUniqueWords\\HtmlUniqueWords\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\x7c1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -72,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

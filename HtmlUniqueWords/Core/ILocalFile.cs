@@ -1,8 +1,12 @@
-﻿namespace HtmlUniqueWords.Core
+﻿using System.IO;
+
+namespace HtmlUniqueWords.Core
 {
-    interface ILocalFile
+    public interface ILocalFile
     {
         IWebPage webPage { get; }
         string path { get; }
+
+        StreamReader StreamReader();
     }
 }

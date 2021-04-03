@@ -27,7 +27,7 @@ namespace HtmlUniqueWords
             #endregion
 
             ADO.DbCommands dbCommands = new ADO.DbCommands(new ADO.DbConnection());
-
+            
             try
             {
                 Core.Parser parser = new Core.Parser(new Core.LocalFile(new Core.WebPage(args[0]), args[1]));

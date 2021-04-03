@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace HtmlUniqueWords.Core
 {
-    class Parser
+    public class Parser
     {
         public ILocalFile localFile;
 
@@ -21,29 +21,38 @@ namespace HtmlUniqueWords.Core
         public Dictionary<string, int> GetUniqWords()
         {
             UniqueWords = new Dictionary<string, int>();
-            StreamReader reader = new StreamReader(localFile.path);
-            HtmlDocument doc = new HtmlDocument();
-            doc.Load(reader);
-            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
-
-            if (nodes != null)
+            StreamReader reader = localFile.StreamReader();
+            try
             {
-                foreach (var node in nodes)
+                HtmlDocument doc = new HtmlDocument();
+                doc.Load(reader);
+                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//body");
+                if (nodes != null)
                 {
-
-                    string[] words = node.InnerText.ToString().ToUpper().Split(splitter).Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
-
-                    foreach (string s in words)
+                    foreach (var node in nodes)
                     {
-                        if (s != String.Empty)
+
+                        string[] words = node.InnerText.ToString().ToUpper().Split(splitter).Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
+
+                        foreach (string s in words)
                         {
-                            if (UniqueWords.TryGetValue(s, out int count))
-                                UniqueWords[s] += 1;
-                            else UniqueWords.Add(s, 1);
+                            if (s != String.Empty)
+                            {
+                                if (UniqueWords.TryGetValue(s, out int count))
+                                    UniqueWords[s] += 1;
+                                else UniqueWords.Add(s, 1);
+                            }
                         }
                     }
                 }
             }
+            catch
+            {
+                throw new Exception("В HTML файле нет слов");
+            }
+            
+
+            
 
             return UniqueWords;
 

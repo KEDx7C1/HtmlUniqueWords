@@ -35,13 +35,13 @@ namespace HtmlUniqueWords.ADO
                 if (numberOfLines == 0)
                 {
                     query = new StringBuilder();
-                    query.Append(string.Format("INSERT INTO 'uniquewords' ('word', 'count', 'url') VALUES ('{0}', '{1}', '{2}')", s.Key, s.Value, source));
+                    query.Append(string.Format(@"INSERT INTO 'uniquewords' ('word', 'count', 'url') VALUES ('{0}', '{1}', '{2}')", s.Key, s.Value, source));
                     numberOfLines++;
                     notExecutedQuery = true;
                 }
                 else if (numberOfLines < 100)
                 {
-                    query.Append(string.Format(", ('{0}', '{1}', '{2}')", s.Key, s.Value, source));
+                    query.Append(string.Format(@", ('{0}', '{1}', '{2}')", s.Key, s.Value, source));
                     numberOfLines++;
                 }
                 if (numberOfLines == 100)
