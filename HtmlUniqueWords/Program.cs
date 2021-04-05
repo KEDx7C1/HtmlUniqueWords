@@ -34,7 +34,7 @@ namespace HtmlUniqueWords
                 Dictionary<string, int> uniqueWords;
                 uniqueWords = parser.GetUniqWords();
 
-
+                UI.Message.Show($"Уникальные слова на странице {args[0]}");
                 foreach (var word in uniqueWords)
                 {
                     UI.Message.Show(word.Key + " " + word.Value);

@@ -2,7 +2,7 @@
   "profiles": {
     "HtmlUniqueWords": {
       "commandName": "Project",
-      "commandLineArgs": "https://ulpressa.ru UlpressaLocal.html"
+      "commandLineArgs": "https://simbirsoft.com SimbirSoftLocal.html"
     }
   }
 }

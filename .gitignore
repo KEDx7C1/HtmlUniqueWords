@@ -1,3 +1,6 @@
 /HtmlUniqueWords/bin
+/HtmlUniqueWords/obj
 /.vs/
 /TestResults/
+/HtmlUniqueWordsTests2/bin
+/HtmlUniqueWordsTests2/obj
