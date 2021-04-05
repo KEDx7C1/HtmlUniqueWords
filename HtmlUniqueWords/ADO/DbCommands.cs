@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
-using System.IO;
 using System.Text;
 
 namespace HtmlUniqueWords.ADO
@@ -29,45 +27,43 @@ namespace HtmlUniqueWords.ADO
         {
             dbConnection = new DbConnection();
             int numberOfLines = 0;
-            bool notExecutedQuery = false;
+            bool isNotExecutedQuery = false;
 
             StringBuilder query = new StringBuilder();
             long unixTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             query.Append($@"INSERT INTO requests ('url', 'datetime') VALUES ('{source}', '{unixTime}')");
             dbConnection.ExecuteInsertQuery(query.ToString());
 
-            SQLiteDataReader reader = dbConnection.ExecuteSelectQuery($"SELECT MAX(id) FROM requests");
-
-
+            SQLiteDataReader records = dbConnection.ExecuteSelectQuery($"SELECT MAX(id) FROM requests");
             string requestId = null;
 
-            foreach (DbDataRecord record in reader)
+            foreach (DbDataRecord record in records)
             {
                 requestId = record["MAX(id)"].ToString();
             }
 
-            foreach (var s in uniqueWords)
+            foreach (var uniqueWord in uniqueWords)
             {
                 if (numberOfLines == 0)
                 {
                     query = new StringBuilder();
-                    query.Append(string.Format(@"INSERT INTO 'uniquewords' ('word', 'count', 'request') VALUES ('{0}', '{1}', '{2}')", s.Key, s.Value, requestId));
+                    query.Append(string.Format(@"INSERT INTO 'uniquewords' ('word', 'count', 'request') VALUES ('{0}', '{1}', '{2}')", uniqueWord.Key, uniqueWord.Value, requestId));
                     numberOfLines++;
-                    notExecutedQuery = true;
+                    isNotExecutedQuery = true;
                 }
                 else if (numberOfLines < 100)
                 {
-                    query.Append(string.Format(@", ('{0}', '{1}', '{2}')", s.Key, s.Value, requestId));
+                    query.Append(string.Format(@", ('{0}', '{1}', '{2}')", uniqueWord.Key, uniqueWord.Value, requestId));
                     numberOfLines++;
                 }
                 if (numberOfLines == 100)
                 {
                     dbConnection.ExecuteInsertQuery(query.ToString());
                     numberOfLines = 0;
-                    notExecutedQuery = false;
+                    isNotExecutedQuery = false;
                 }
             }
-            if (notExecutedQuery)   //if counts of appended lines less 100 and query is not executed
+            if (isNotExecutedQuery)   //if counts of appended lines less 100 and query is not executed
             {
                 dbConnection.ExecuteInsertQuery(query.ToString());
             }

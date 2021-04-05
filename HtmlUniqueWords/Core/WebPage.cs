@@ -1,11 +1,11 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.IO;
 using System.Net;
-using NLog;
 
 namespace HtmlUniqueWords.Core
 {
-    class WebPage:IWebPage
+    class WebPage : IWebPage
     {
         public string source { get; }
 
@@ -16,7 +16,7 @@ namespace HtmlUniqueWords.Core
             this.source = source;
         }
 
-        public void DownloadPage (string path)
+        public void DownloadPage(string path)
         {
             string htmlDir = "html";
             try
@@ -34,14 +34,14 @@ namespace HtmlUniqueWords.Core
 
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 StreamWriter writer = new StreamWriter(File.Open(@$"{htmlDir}\\" + path, FileMode.Create));
-                
+
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     writer.WriteLine(line);
                 }
-                
+
                 reader.Close();
                 writer.Close();
             }

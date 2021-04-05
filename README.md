@@ -9,7 +9,7 @@ _HtmlUniqueWords_ counts unique words on a web page.
 Program takes two arguments:
 
 _URL-adress_ is URL adress of the web page with specifying protocol _http_ or _https_;<br/>
-_localfile_ is file with _.html_ extention.
+_localfile_ is file on local drive.
 
 Use command prompt:
 
@@ -21,13 +21,13 @@ Example:
 
     HtmlUniqueWords.exe https://simbirsoft.com SimbirsoftLocal.html
 
-It saves the *.html* file from the specified _URL-adress_ to the _.\html\localfile_
+It saves the _.html_ file from the specified _URL-adress_ to the _.\html\localfile_
 and counts the number of unique words in the the saved file.
-Result is saved in the  local SQLite3 database in *.\SqLite* directory and output to the console.
+Result is saved in the  local __SQLite3__ database in _.\SqLite_ directory and output to the console.
 
 ## Comment
 
-This program was created as test for admission to **Java and C #. Backend-workshop online from the IT company [SimbirSoft](https://www.simbirsoft.com/)**.
+This program was created as test for admission to __Java and C #. Backend-workshop online from the IT company [SimbirSoft](https://www.simbirsoft.com/)__.
 
 ## License
 
@@ -49,7 +49,7 @@ _HtmlUniqueWords_ подсчитывает количество уникальн
 Программа принимает два аргумента:
 
 _URL-adress_ - URL адрес веб-страницы с указанием протокола _http_ или _https_;<br/>
-_localfile_ - _.html_ файл.
+_localfile_ - файл на локальном диске.
 
 Запуск, используя командную строку:
 
@@ -59,11 +59,11 @@ _localfile_ - _.html_ файл.
 
      HtmlUniqueWords.exe https://simbirsoft.com SimbirsoftLocal.html
 
-Программа сохраняет *.html* файл с указанного _URL-adress_ в _.\html\localfile_ и вычисляет количество уникальных слов в сохраненном файле. Результат сохраняется в локальной **SQLite3** базе данных в директории *.\SQLite* и выводится в консоль.
+Программа сохраняет _.html_ файл с указанного _URL-adress_ в _.\html\localfile_ и вычисляет количество уникальных слов в сохраненном файле. Результат сохраняется в локальной __SQLite3__ базе данных в директории _.\SQLite_ и выводится в консоль.
 
 ## Примечание
 
-Программа разрабатывалась в качестве тестового задания для поступления на **Java и C#. Backend-практикум онлайн от IT-компании [SimbirSoft](https://www.simbirsoft.com/)**.
+Программа разрабатывалась в качестве тестового задания для поступления на __Java и C#. Backend-практикум онлайн от IT-компании [SimbirSoft](https://www.simbirsoft.com/)__.
 
 ## Лицензии
 _HtmlUniqueWords_ использует следующие библиотеки:

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
-using NLog;
 using System.Linq;
 
 namespace HtmlUniqueWords
@@ -10,7 +10,7 @@ namespace HtmlUniqueWords
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            
+
             #region Проверка числа аргументов
             try
             {
@@ -26,7 +26,7 @@ namespace HtmlUniqueWords
             #endregion
 
             ADO.DbCommands dbCommands = new ADO.DbCommands(new ADO.DbConnection());
-            
+
             try
             {
                 Core.Parser parser = new Core.Parser(new Core.LocalFile(new Core.WebPage(args[0]), args[1]));
@@ -36,12 +36,15 @@ namespace HtmlUniqueWords
 
                 UI.Message.Show($"Уникальные слова на странице {args[0]}");
 
-                foreach (var word in uniqueWords.OrderByDescending(x => x.Value))
+                foreach (var uniqueWord in uniqueWords.OrderByDescending(x => x.Value))
                 {
-                    UI.Message.Show(word.Key + " " + word.Value);
+                    UI.Message.Show(uniqueWord.Key + " " + uniqueWord.Value);
                 }
 
                 dbCommands.InsertValues(uniqueWords, args[0]);
+
+                UI.Message.Show("Для закрытия приложения нажмите любую клавишу");
+                UI.Message.ReadKey();
             }
             catch (Exception ex)
             {

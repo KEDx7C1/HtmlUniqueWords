@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System.IO;
 
 namespace HtmlUniqueWords.ADO
@@ -13,7 +10,7 @@ namespace HtmlUniqueWords.ADO
     {
         private readonly string dbName = "local.db";
         private readonly string dbDir = "SQLite";
-        private SQLiteConnection connection;
+        private readonly SQLiteConnection connection;
         /// <summary>
         /// 
         /// </summary>

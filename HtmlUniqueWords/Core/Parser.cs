@@ -1,8 +1,8 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using HtmlAgilityPack;
 
 namespace HtmlUniqueWords.Core
 {
@@ -11,9 +11,9 @@ namespace HtmlUniqueWords.Core
         public ILocalFile localFile;
 
         private Dictionary<string, int> UniqueWords;
-        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '«', '»', '/' };
+        private readonly char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '«', '»', '/' };
 
-        public Parser (ILocalFile localFile)
+        public Parser(ILocalFile localFile)
         {
             this.localFile = localFile;
         }

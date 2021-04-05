@@ -8,5 +8,11 @@ namespace HtmlUniqueWords.UI
         {
             Console.WriteLine(message);
         }
+
+        public static void ReadKey()
+        {
+            Console.ReadKey();
+        }
+
     }
 }

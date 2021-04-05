@@ -10,7 +10,7 @@ namespace HtmlUniqueWords.Core
 
         StreamReader streamReader;
 
-        public LocalFile (IWebPage webPage, string path)
+        public LocalFile(IWebPage webPage, string path)
         {
             this.webPage = webPage;
             this.path = path;

@@ -1,17 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HtmlUniqueWords.Core;
+using Moq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using Moq; 
+using System.Text;
 
 namespace HtmlUniqueWords.Core.Tests
 {
     [TestClass()]
     public class ParserTests
     {
-        private static Mock<ILocalFile> GetMockLocalFile (string testString)
+        private static Mock<ILocalFile> GetMockLocalFile(string testString)
         {
             Mock<ILocalFile> mockLocalFile = new Mock<ILocalFile>();
             UTF8Encoding encoding = new UTF8Encoding();
@@ -53,7 +52,7 @@ namespace HtmlUniqueWords.Core.Tests
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
 
