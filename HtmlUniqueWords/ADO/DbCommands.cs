@@ -5,23 +5,20 @@ using System.Text;
 
 namespace HtmlUniqueWords.ADO
 {
-    /// <summary>
-    /// Класс обращений к базе данных SQL
-    /// </summary>
     class DbCommands : IDbCommands
     {
         public IDbConnection dbConnection { get; set; }
-        /// <summary>
-        /// Добавление данных в базу данных
-        /// </summary>
-        /// <param name="uniqueWords">Словарь уникальных слов</param>
-        /// <param name="source">URL адрес страницы</param>
+        
         public DbCommands(IDbConnection dbConnection)
         {
             this.dbConnection = dbConnection;
         }
 
-
+        /// <summary>
+        /// Добавление словаря в базу данных
+        /// </summary>
+        /// <param name="uniqueWords">Словарь уникальных слов</param>
+        /// <param name="source">Источник данных</param>
         public void InsertValues(Dictionary<string, int> uniqueWords, string source)
         {
             dbConnection = new DbConnection();

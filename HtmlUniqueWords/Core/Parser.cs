@@ -11,7 +11,7 @@ namespace HtmlUniqueWords.Core
         public ILocalFile localFile;
 
         private Dictionary<string, int> UniqueWords;
-        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '<', '>' };
+        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t' };
 
         public Parser (ILocalFile localFile)
         {
@@ -21,7 +21,7 @@ namespace HtmlUniqueWords.Core
         public Dictionary<string, int> GetUniqWords()
         {
             UniqueWords = new Dictionary<string, int>();
-            StreamReader reader = localFile.StreamReader();
+            StreamReader reader = localFile.GetStreamReader();
             try
             {
                 HtmlDocument doc = new HtmlDocument();
@@ -50,13 +50,8 @@ namespace HtmlUniqueWords.Core
             {
                 throw new Exception("В HTML файле нет слов");
             }
-            
-
-            
 
             return UniqueWords;
-
         }
-
     }
 }

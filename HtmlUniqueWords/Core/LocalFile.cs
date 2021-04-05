@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace HtmlUniqueWords.Core
 {
@@ -16,11 +17,20 @@ namespace HtmlUniqueWords.Core
             webPage.DownloadPage(path);
         }
 
-        public StreamReader StreamReader()
+        public StreamReader GetStreamReader()
         {
             string htmlDir = "html";
-            streamReader = new StreamReader(@$"{htmlDir}\\" + path);
+            try
+            {
+                streamReader = new StreamReader(@$"{htmlDir}\\" + path);
+            }
+            catch
+            {
+                throw new Exception($"Не удалось получить доступ к {path}");
+            }
             return streamReader;
+
+
         }
 
     }

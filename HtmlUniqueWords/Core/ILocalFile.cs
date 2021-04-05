@@ -7,6 +7,6 @@ namespace HtmlUniqueWords.Core
         IWebPage webPage { get; }
         string path { get; }
 
-        StreamReader StreamReader();
+        StreamReader GetStreamReader();
     }
 }

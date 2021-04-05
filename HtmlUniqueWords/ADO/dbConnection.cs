@@ -15,7 +15,6 @@ namespace HtmlUniqueWords.ADO
         private readonly string dbDir = "SQLite";
         private SQLiteConnection connection;
         /// <summary>
-        /// 
         /// </summary>
         public DbConnection()
         {
@@ -50,7 +49,7 @@ namespace HtmlUniqueWords.ADO
         
         }
         /// <summary>
-        /// Метод запросов выборки к базе данных SQLite
+        /// Метод выполнения запросов выборки к базе данных SQLite
         /// </summary>
         /// <param name="query">Текст запроса</param>
         /// <returns></returns>
@@ -61,7 +60,7 @@ namespace HtmlUniqueWords.ADO
             return reader;
         }
         /// <summary>
-        /// Метод запросов вставки к базе данных SQLite
+        /// Метод выполнения запросов вставки к базе данных SQLite
         /// </summary>
         /// <param name="query"></param>
         public void ExecuteInsertQuery (string query)
