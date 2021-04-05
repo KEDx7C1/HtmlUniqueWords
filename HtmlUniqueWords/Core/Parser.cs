@@ -11,7 +11,7 @@ namespace HtmlUniqueWords.Core
         public ILocalFile localFile;
 
         private Dictionary<string, int> UniqueWords;
-        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t' };
+        private char[] splitter = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\t', '«', '»', '/' };
 
         public Parser (ILocalFile localFile)
         {

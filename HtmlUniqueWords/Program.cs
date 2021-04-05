@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
 using NLog;
+using System.Linq;
 
 namespace HtmlUniqueWords
 {
@@ -37,7 +36,7 @@ namespace HtmlUniqueWords
 
                 UI.Message.Show($"Уникальные слова на странице {args[0]}");
 
-                foreach (var word in uniqueWords)
+                foreach (var word in uniqueWords.OrderByDescending(x => x.Value))
                 {
                     UI.Message.Show(word.Key + " " + word.Value);
                 }
